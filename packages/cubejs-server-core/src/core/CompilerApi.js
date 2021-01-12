@@ -1,6 +1,5 @@
-const QueryBuilder = require('@cubejs-backend/schema-compiler/adapter/QueryBuilder');
-const PrepareCompiler = require('@cubejs-backend/schema-compiler/compiler/PrepareCompiler');
-const crypto = require('crypto');
+import crypto from 'crypto';
+import { QueryBuilder, compile } from '@cubejs-backend/schema-compiler';
 
 export class CompilerApi {
   constructor(repository, dbType, options) {
@@ -33,7 +32,7 @@ export class CompilerApi {
         requestId
       });
       // TODO check if saving this promise can produce memory leak?
-      this.compilers = PrepareCompiler.compile(this.repository, {
+      this.compilers = compile(this.repository, {
         allowNodeRequire: this.allowNodeRequire,
         compileContext: this.compileContext,
         allowJsDuplicatePropsInSchema: this.allowJsDuplicatePropsInSchema
