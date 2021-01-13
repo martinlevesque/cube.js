@@ -400,7 +400,7 @@ Original SQL pre-aggregation can be used with time partitioning and incremental 
 In this case, it can be used as follows:
 ```javascript
 cube(`Orders`, {
-  sql: `select * from visitors WHERE ${FILTER_PARAMS.visitors.created_at.filter('created_at')}`,
+  sql: `select * from visitors WHERE ${FILTER_PARAMS.Orders.created_at.filter('created_at')}`,
 
   preAggregations: {
     main: {
